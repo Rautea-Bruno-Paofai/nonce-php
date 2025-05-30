@@ -9,11 +9,11 @@ use Nonce\HashStore\Session;
 /**
  * Fast PHP nonce and CSRF tokens tool
  *
- * @author elhardoum <i@elhardoum.com>
- * @version 0.3
- * @link http://github.com/elhardoum/nonce-php
+ * @author rautea <contact@rautea.com>
+ * @version 0.1
+ * @link http://github.com/rautea-bruno-paofai/nonce-php
  * @license GPL-3.0
- * @see https://github.com/elhardoum/nonce-php/blob/master/readme.md
+ * @see https://github.com/rautea-bruno-paofai/nonce-php/blob/master/readme.md
  */
 
 class Nonce
@@ -21,28 +21,11 @@ class Nonce
   private readonly Config $config;
   private readonly Store $store;
 
-  /**
-   * Instantiate class
-   *
-   * @param Config $config configuration context
-   * @param Store $config temporary store context
-   * @return void
-   */
-
   public function __construct(Config $config, Store $store = new Session())
   {
     $this->config = $config;
     $this->store = $store;
   }
-
-  /**
-   * Create a nonce based on an action string
-   *
-   * @param string $action an action for the nonce
-   * @param int $salt_length length of created salt
-   * @param int $expire_seconds TTL seconds for the product hash
-   * @return string generated nonce
-   */
 
   public function create(string $action, int $salt_length = 16, int $expire_seconds = 600): string
   {
@@ -64,14 +47,6 @@ class Nonce
 
     return $nonce;
   }
-
-  /**
-   * Verifies nonces authenticity and validity
-   *
-   * @param string $nonce nonce to be verified
-   * @param string $action action name (like a password) for said nonce
-   * @return bool verification outcome
-   */
 
   public function verify(string $nonce, string $action): bool|string
   {
@@ -103,24 +78,10 @@ class Nonce
     return self::delete($action);
   }
 
-  /**
-   * Delete a hash from temporary storage
-   *
-   * @param string $hash hash to be deleted
-   * @return mixed implemented store return type
-   */
-
   public function delete(string $action)
   {
     return $this->store->deleteKey($action);
   }
-
-  /**
-   * Generate a random character of X characters length
-   *
-   * @param int $length characters length
-   * @return string generated random character
-   */
 
   public static function getRandomCharacter(int $length = 16): string
   {
