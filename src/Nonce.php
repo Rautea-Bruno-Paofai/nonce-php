@@ -75,7 +75,7 @@ class Nonce
     $hash = hash($algo, $toHash);
     if ($hash !== $nonce_hash) return false;
 
-    return self::delete($action);
+    return true;
   }
 
   public function delete(string $action)
