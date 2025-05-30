@@ -1,14 +1,14 @@
 {
-    "name": "elhardoum/nonce-php",
+    "name": "rautea/nonce-php",
     "type": "library",
     "description": "Fast PHP nonce and CSRF tokens tool",
     "keywords": ["CSRF", "tokens", "nonce", "form"],
     "license": "GPL-3.0",
     "authors": [
         {
-            "name": "elhardoum",
-            "email": "i@elhardoum.com",
-            "homepage": "https://www.elhardoum.com"
+            "name": "Bruno",
+            "email": "contact@autea.com",
+            "homepage": "https://rautea.com"
         }
     ],
     "minimum-stability": "stable",
@@ -18,7 +18,6 @@
     },
     "require-dev": {
         "phpspec/phpspec": "^7.2.0",
-        "predis/predis": "^1.1.1"
     },
     "autoload": {
         "psr-4": {
